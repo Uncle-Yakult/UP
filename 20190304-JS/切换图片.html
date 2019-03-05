@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script>
+            /*
+                1.事件：点击事件 onclick
+                2.事件要触发函数：changeImg
+                3.在函数中
+             */
+            function changeImg() {
+                // alert("要切换了")
+                var img = document.getElementById("img1");
+                img.src = "01adfa5c7dddd0a801203d22f29adb.jpg";
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="点击切换图片" onclick="changeImg()"/>
+        <br>
+        <img src="01ac215c7c8df1a801213f26dd08a9.jpg" id="img1">
+    </body>
+</html>

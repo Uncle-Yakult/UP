@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script>
+            function dianwo(){
+                // alert("我被点击了");
+                //1.首先要活得这个DIV
+                var div = document.getElementById("div1")
+                div.innerHTML = "<font color='red'>内容被替换掉了</font>";
+                // div.innerText = "<font color='red'>内容被替换掉了</font>";
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" value="点我，修改DIV中的内容" onclick="dianwo()"/>
+
+        <div id="div1">
+            这里的内容一会要被替换掉
+        </div>
+    </body>
+</html>

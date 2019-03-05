@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <!--
+            1.校验用户名，长度不能小于6位
+                1）确定事件：提交事件 onsumit
+                2）事件要触发函数 checkForm()
+                3）函数中要去做一些校验
+        -->
+        <script>
+            function checkForm(){
+
+                //获取用户输入的内容
+                var input1 = document.getElementById("usename");
+
+                // alert(input1.value);
+                var uValue = input1.value;
+                if (uValue.length >= 6){
+
+                }else {
+                    alert("对不起，用户名过短！")
+                    return false;
+                }
+
+                //邮箱的校验
+                //获取用户输入的邮箱的值
+                var email = document.getElementById("email");
+                var uEmail = email.value;
+                if (/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/.test(uEmail)) {
+                    alert("校验成功")；
+                }else {
+                    alert("校验失败")
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <form action="../20190301/网站首页的优化/网站首页.html" onsubmit="return checkForm()">
+            用户名：<input type="text"  id="usename"/><br />
+            密码：<input type="password"  id="password"/><br />
+            邮箱：<input type="email"  id="email"/><br />
+
+            <input type="submit" value="提交" />
+        </form>
+    </body>
+</html>

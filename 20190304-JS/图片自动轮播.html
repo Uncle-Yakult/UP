@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script>
+
+            var index = 0;
+            function changeImg() {
+                //1.获得要切换图片的那个元素
+                var img = document.getElementById("img1");
+
+                //计算出当前要切换到第几张图片
+                var curIndex = index%3 + 1; //0,1,2
+                img.src="./"+curIndex+".jpg";   //1,2,3
+
+                index = index + 1;
+            }
+            function init() {
+                setInterval("changeImg()",1000);
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <img src="01ac215c7c8df1a801213f26dd08a9.jpg" id="img1"/>
+    </body>
+</html>
