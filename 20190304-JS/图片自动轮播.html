@@ -6,13 +6,24 @@
         <script>
 
             var index = 0;
+
+            var data = [
+                '01ac215c7c8df1a801213f26dd08a9.jpg',
+                '01adfa5c7dddd0a801203d22f29adb.jpg',
+                '01eb9e5c7de1c9a801203d224ca601.jpg',
+                '01f0f45c7dd215a801213f264b54b9.jpg',
+                '011fd25c7de1daa801203d22da940f.jpg',
+                '0138ec5c7de1a4a801203d2226217f.jpg',
+            ];
+
             function changeImg() {
                 //1.获得要切换图片的那个元素
                 var img = document.getElementById("img1");
 
                 //计算出当前要切换到第几张图片
                 var curIndex = index%3 + 1; //0,1,2
-                img.src="./"+curIndex+".jpg";   //1,2,3
+                console.log(data[curIndex], curIndex);
+                img.src="./"+data[curIndex];   //1,2,3
 
                 index = index + 1;
             }
