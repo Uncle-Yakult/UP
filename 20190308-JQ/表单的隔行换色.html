@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script type="text/javascript" src="jquery-1.11.0.js"></script>
+        <!--
+            1.导入JQ的包
+            2.文档加载完成函数：页面初始化
+            3.获得所有的行：元素选择器
+            4.根据行号奇数/偶数去修改颜色
+        -->
+
+        <script>
+
+            $(function () {
+
+                //获得所有的行：元素选择器
+                $("tr:even:gt(0)").css("background-color","#CCCCCC");
+                //修改基数行
+                $("tr:odd").css("background-color","#FFF38F");
+
+            });
+
+        </script>
+
+    </head>
+    <body>
+        <table border="1px" width="600px" id="tab">
+            <tr>
+                <td>
+                    <input type="checkbox" onclick="checkAll()" id="check1"/>
+                </td>
+                <td>分类ID</td>
+                <td>分类名称</td>
+                <td>分类商品</td>
+                <td>分类描述</td>
+                <td>操作</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkone"/>
+                </td>
+                <td>1</td>
+                <td>手机数码</td>
+                <td>华为，小米，尼康</td>
+                <td>黑马</td>
+                <td><a href="#">修改</a>丨<a href="#">删除</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkone"/>
+                </td>
+                <td>2</td>
+                <td>成人用品</td>
+                <td>充气的</td>
+                <td>这里面的充气电动硅胶</td>
+                <td><a href="#">修改</a>丨<a href="#">删除</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkone"/>
+                </td>
+                <td>3</td>
+                <td>电脑办公</td>
+                <td>联系，华硕</td>
+                <td>笔记本特卖</td>
+                <td><a href="#">修改</a>丨<a href="#">删除</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkone"/>
+                </td>
+                <td>4</td>
+                <td>馋嘴零食</td>
+                <td>辣条，麻花，薯片</td>
+                <td>年货</td>
+                <td><a href="#">修改</a>丨<a href="#">删除</a></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkone"/>
+                </td>
+                <td>5</td>
+                <td>床上用品</td>
+                <td>床单，被套，四件套</td>
+                <td>都是套子</td>
+                <td><a href="#">修改</a>丨<a href="#">删除</a></td>
+            </tr>
+        </table>
+    </body>
+</html>
