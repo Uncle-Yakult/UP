@@ -10,6 +10,7 @@
     function fun(){
         echo 'she is a girl!';
     }
+    //词法分析—语法分析—编译—加载编译的代码—执行
     ?>
     </body>
 </html>
