@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title></title>
+    </head>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <body>
+        <header>
+            <h1>
+                <a class="riQi">今天是几月几号</a>
+                <div style="float: right;font-size: 10px;margin-right: 10px">当天消费：<a class="total">10</a>元</div>
+            </h1>
+        </header>
+        <br>
+        <div>
+            <div>
+                <div class="list list1" >
+                    <div>
+                        <select style="width: 15%">
+                            <option name="meat">肉</option>
+                            <option name="vegetables">蔬菜</option>
+                            <option name="sauces">调味料</option>
+                            <option name="extra">其他消费</option>
+                        </select>
+                        &nbsp;
+                        <input style="width: 25%" name="shangPin">
+                        &#58;
+                        <input style="width: 12%" name="RMB">元
+                        &nbsp;&nbsp;
+                        <button class="add" onclick="spend.add(this)"> + </button>
+                        <button class="del" onclick="spend.del(this)"> - </button>
+                        <button class="chongzhi" onclick="spend.resetIn(this)">清空</button>
+                    </div><br>
+                </div>
+
+                <!--<div class="list">
+                        <div>
+                            <select>
+                                <option name="meat">肉</option>
+                                <option name="vegetables">蔬菜</option>
+                                <option name="sauces">调味料</option>
+                                <option name="extra">其他消费</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input>元
+                            <button value="-" name="deleteTable" onclick="spend.del(this)"> - </button>
+                        </div><br>
+                        <div style="text-align: right;">
+                            <button class="chongzhi" onclick="spend.resetIn(this)">清空</button>
+                        </div>
+                    </div>-->
+            </div>
+        </div>
+        <div style="text-align: center;"><button onclick="spend.tiJiao()" class="tijiao">确认提交</button></div>
+        <footer>
+            <p style="text-align: center;color: gainsboro;">©UncleYakult 版权所有</p>
+        </footer>
+    </body>
+</html>
+
+                        <!---------------------style部分---------------------->
+<style type="text/css">
+    header{background-color: #444444; height: 60px; color: #eeeeee; line-height: 60px}
+    body{margin: 0px}
+    h1{margin: 0px;padding: 0px}
+    .riQi{margin-left: 10px;font-family: "Microsoft YaHei"}
+    .list{margin-left: 10px}
+    .chongzhi{width: 50px; height: 24px; background-color: gray; color: gainsboro; border: 1px solid #eeeeee; border-radius: 3px;}
+    .tijiao{width: 120px; height: 36px; background-color: #2675ff; color: #fff; border: 1px solid #eeeeee; border-radius: 4px; font-weight: bold}
+    .list .add {display: none}
+    .list .del {display: inline-block }
+    .list1 .add {display: inline-block}
+    .list1 .del {display: none}
+</style>
+
+                        <!--------------------script部分---------------------->
+<script type="text/javascript">
+/*    var delparent = function(o){
+        o.parentNode.parentNode.removeChild(o.parentNode)
+    };*/
+
+
+
+    var category = {
+        meat:'肉',
+        vegetables:'蔬菜',
+        sauces:'调味料',
+        extra:'其他消费'
+    };
+
+    //
+    var spend = {
+        data : [
+            {
+                date : '2019-04-1',
+                category : 'meat',
+                name : '猪肉',
+                spend : '10.3',
+                unit : '元',
+            },
+            {
+                date : '2019-04-1',
+                category : 'meat',
+                name : '猪肉',
+                spend : '10.3',
+                unit : '元',
+            },
+            {
+                date : '2019-04-1',
+                category : 'meat',
+                name : '猪肉',
+                spend : '10.3',
+                unit : '元',
+            },
+            {
+                date : '2019-04-1',
+                category : 'meat',
+                name : '猪肉',
+                spend : '10.3',
+                unit : '元',
+            }
+        ],//每天消费
+        category : {
+            meat:'肉',
+            vegetables:'蔬菜'
+        },
+        dataFormat : {
+            date : '2019-03-31',
+            category : 'meat',
+            name : '猪肉',
+            spend : '10.3',
+            unit : '元',
+        },
+        init : function () {
+            this.initList();
+            this.initTitle();
+        },
+        initList : function() {
+            //获取页面当天已存信息 -> 增加对应数目-1的行 ->将数据写进input框
+            this.getData(this.getKey(0,0,0));
+            console.log(this.getData(this.getKey(0,0,0)), this.getKey(0,0,0))
+        },
+        getKey : function (year,month,day) {
+            var key = year>0 ? new Date(year,month,day) : new Date() ;
+            return key.getFullYear() + '-' + (key.getMonth()+1) + '-' + key.getDay();
+        },
+        initTitle : function () {
+            $('.riQi').text(commnt.getDate());
+        },
+        initCategory : function () {
+            //动态加载下拉框
+            // alert('动态加载下拉框');
+        },
+        add : function (_this) {
+            var html=$(_this).parent().parent().html();
+            $('.list1').after('<div class="list">' + html + '</div>');
+        },
+        tiJiao : function (){
+            var date = [
+                {
+                    category : 'meat',
+                    name : '猪肉',
+                    spend : '10.3',
+                },
+                {
+                    category : 'meat',
+                    name : '猪肉',
+                    spend : '10.3',
+                },
+                {
+                    category : 'meat',
+                    name : '猪肉',
+                    spend : '10.3',
+                }
+            ];
+            var total = 0;
+
+            var data = [];
+            $('div.list').each(function () {
+                var list = {
+                    category : $(this).find('select').val(),
+                    name : $(this).find('input[name=shangPin]').val(),
+                    spend : $(this).find('input[name=RMB]').val(),
+                };
+                total = parseInt(total) + parseInt(list.spend);
+                data.push(list);
+            });
+            $('.total').text(total);
+            var key = this.getKey(0,0,0);
+
+            this.saveData(key, data);
+
+        },
+        saveData : function(key, value) {
+            value = JSON.stringify(value);
+            if(! window.localStorage){
+                alert("浏览器支持localstorage");
+            }else{
+                var storage=window.localStorage;
+                storage.setItem(key, value);
+            }
+        },
+        getData : function(key) {
+            var storage=window.localStorage;
+            return JSON.parse(storage.getItem(key))
+        },
+        del : function (_this) {
+            $(_this).parent().parent().remove();
+        },
+        update : function () {
+
+        },
+        select : function () {
+
+        },
+        todayTotalSpend : function () {
+
+        },
+        tomonthTotalSpend : function () {
+
+        },
+        resetIn : function (_this) {
+            $(_this).parent().parent().find('input').val('');
+        }
+    };
+
+    var commnt = {
+        getDate : function () {
+            var myDate = new Date();
+            myDate.getYear();        //获取当前年份(2位)
+            myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+            myDate.getMonth();       //获取当前月份(0-11,0代表1月)
+            myDate.getDate();        //获取当前日(1-31)
+            myDate.getDay();         //获取当前星期X(0-6,0代表星期天)
+            myDate.getTime();        //获取当前时间(从1970.1.1开始的毫秒数)
+            myDate.getHours();       //获取当前小时数(0-23)
+            myDate.getMinutes();     //获取当前分钟数(0-59)
+            myDate.getSeconds();     //获取当前秒数(0-59)
+            myDate.getMilliseconds();    //获取当前毫秒数(0-999)
+            myDate.toLocaleDateString();     //获取当前日期
+            var mytime=myDate.toLocaleTimeString();     //获取当前时间
+            myDate.toLocaleString( );        //获取日期与时间
+            return myDate.getFullYear() +  '-' + (myDate.getMonth()+1) + '-' + myDate.getDate();
+        }
+    };
+
+    $(function () {
+        spend.init();
+    });
+
+</script>
