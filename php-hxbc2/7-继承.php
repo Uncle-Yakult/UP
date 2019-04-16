@@ -7,5 +7,10 @@ class Person {
     }
 }
 //Student 类继承了Person
-class Student extends Person
+class Student extends Person{
+}
+//测试
+$stu = new Student;
+$stu -> getName();      //人总是有名字的
+var_dump($stu)          //object(Student)#1 (1) {["name":"Person":private]=> NULL }
 ?>
