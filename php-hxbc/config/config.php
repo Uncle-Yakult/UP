@@ -5,6 +5,6 @@
         'name'  =>  'root',
         'pwd'   =>  'root',
         'charset'=> 'utf8',
-        'database'  =>  'jokeDB'
+        'database'  =>  'php4'
     );
 ?>
