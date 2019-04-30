@@ -20,7 +20,7 @@ class MySQLDB {
 	}
 	//连接数据库
 	private function connect() {
-		$this->link=@mysql_connect("{$this->host}:{$this->port}",$this->user,$this->pwd) or die('数据库连接失败');
+		$this->link=@mysqli_connect("{$this->host}:{$this->port}",$this->user,$this->pwd) or die('数据库连接失败');
 	}
 	//设置字符编码
 	private function setCharset() {

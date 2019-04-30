@@ -20,7 +20,7 @@ class MySQLDB {
 	}
 	//连接数据库
 	private function connect() {
-		$this->link=@mysql_connect("{$this->host}:{$this->port}",$this->user,$this->pwd) or die('数据库连接失败');
+		$this->link=@mysqli_connect("{$this->host}:{$this->port}",$this->user,$this->pwd) or die('数据库连接失败');
 	}
 	//设置字符编码
 	private function setCharset() {
@@ -38,10 +38,10 @@ class MySQLDB {
 	*如果是数据操作语句，成功返回true,失败返回false;
 	*/
 	public function query($sql) {
-		if(!$result=mysql_query($sql,$this->link)){
+		if(!$result=mysqli_query($sql,$this->link)){
 			echo 'SQL语句执行失败<br>';
-			echo '错误编号：'.mysql_errno(),'<br>';
-			echo '错误信息：'.mysql_error(),'<br>';
+			echo '错误编号：'.mysqli_errno(),'<br>';
+			echo '错误信息：'.mysqli_error(),'<br>';
 			echo '错误的SQL语句',$sql,'<br>';
 			exit;
 		}
