@@ -39,17 +39,12 @@
 	<div id="main" class="auto">
 		<div class="wrap1">
 			<div class="pages">
-				<a>« 上一页</a>
-				<a>1</a>
-				<span>2</span>
-				<a>3</a>
-				<a>4</a>
-				<a>...13</a>
-				<a>下一页 »</a>
+				<?php echo $strPage; ?>
 			</div>
 			<a class="btn reply" href="./reply.php?pub_id=<?php echo $row['pub_id']; ?>"></a>
 			<div style="clear:both;"></div>
-		</div>
+		</div>	
+		<?php if($pageNum == 1) : ?>
 		<div class="wrapContent">
 			<div class="left">
 				<div class="face">
@@ -77,6 +72,9 @@
 			</div>
 			<div style="clear:both;"></div>
 		</div>
+		<?php endIf; ?>
+
+		<?php $i=5*$pageNum-4;while($rep_row = mysql_fetch_assoc($rep_result)) : ?>
 		<div class="wrapContent">
 			<div class="left">
 				<div class="face">
@@ -85,21 +83,22 @@
 					</a>
 				</div>
 				<div class="name">
-					<a href="">匿名</a>
+					<a href=""><?php echo $rep_row['rep_user']; ?></a>
 				</div>
 			</div>
 			<div class="right">
 				
 				<div class="pubdate">
-					<span class="date">回复时间：2015-12-29 14:24:26</span>
-					<span class="floor">1楼&nbsp;|&nbsp;<a href="#">引用</a></span>
+					<span class="date">回复时间：<?php echo date('Y-m-d H:i:s', $rep_row['rep_time']); ?></span>
+					<span class="floor"><?php echo $i++;?>楼&nbsp;|&nbsp;<a href="#">引用</a></span>
 				</div>
 				<div class="content">
-					抢到沙发了！！！
+					<?php echo $rep_row['rep_content']; ?>
 				</div>
 			</div>
 			<div style="clear:both;"></div>
 		</div>
+		<?php endWhile; ?>
 		<div class="wrapContent">
 			<div class="left">
 				<div class="face">
@@ -129,13 +128,7 @@
 		</div>
 		<div class="wrap1">
 			<div class="pages">
-				<a>« 上一页</a>
-				<a>1</a>
-				<span>2</span>
-				<a>3</a>
-				<a>4</a>
-				<a>...13</a>
-				<a>下一页 »</a>
+				<?php echo $strPage; ?>
 			</div>
 			<a class="btn reply" href="./reply.php?pub_id=<?php echo $row['pub_id']; ?>"></a>
 			<div style="clear:both;"></div>

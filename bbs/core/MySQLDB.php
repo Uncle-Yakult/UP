@@ -45,6 +45,48 @@ function my_query ($sql) {
 }
 
 /**
+ * 封装fetchAll函数，得到多行多列的数据
+ * @param string $sql 一条sql语句
+ * @return array 二维数组
+ */
+function fetchaAll($sql) {
+    $result = my_query($sql);
+    $rows = array();
+    while($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    //释放结果集资源
+    mysqli_free_result($result);
+    return $rows;
+}
+
+/**
+ * 封装fetchRow函数，得到一行多列的数据（一条记录）
+ * @param string $sql 一条sql语句
+ * @return array 一维数组
+ */
+function fetchRow($sql) {
+    $result = my_query($sql);
+    $row = mysqli_fetch_assoc($result);
+    //释放结果集资源
+    mysqli_free_result($result);
+    return $row;
+}
+
+/**
+ * 封装fetchColumn函数，得到一行一列的数据（一个数值）
+ * @param string $sql 一条sql语句
+ * @return string $str
+ */
+function fetchColumn($sql) {
+    $result = my_query($sql);
+    $row = mysqli_fetch_row($result);
+    //释放结果集资源
+    mysqli_free_result($result);
+    return isset($row[0]) ? $row[0] : NULL;
+}
+
+/**
  * 选择默认的字符集
  */
 function my_charset($arr) {

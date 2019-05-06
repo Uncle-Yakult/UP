@@ -13,6 +13,12 @@ $user_password2 = trim($_POST['user_password2']);
 $vcode = trim($_POST['vcode']);
 
 // 4, 判断数据合法性
+// 判断用户输入的验证码和系统随机产生的验证码是否相同
+session_start();
+if (strtolower($vcode) != strtolower($_SESSION['captcha'])) {
+    // 验证码非法，跳转
+    jump('./register.php','验证码不正确！');
+}
 // 4.1 判断用户名和密码是否为空
 if(empty($user_name) || empty($user_password1) || empty($user_password2)) {
 	// 非法,跳转
