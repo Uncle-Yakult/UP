@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+    <script type="text/javascript">
+        window.onload=function(){
+        document.getElementById('username').onblur=function(){
+            var name=document.getElementById('username').value;
+            name=encodeURIComponent(name);  //编码
+            var req=new XMLHttpRequest();
+            req.open('get','04.php?name='+name);
+            req.onreadystatechange=function(){
+                if(req.readyState==4 && req.status==200){
+                    alert(req.responseText);
+                }
+            }
+            req.send(null);   //如果send()方法中没有数据，要写null
+        }
+    }
+    </script>
+    用户名：<input type="text" name="" id="username">
+    </body>
+</html>

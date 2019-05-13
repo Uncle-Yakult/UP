@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+    <script type="text/javascript">
+        window.onload = function () {
+            var req = new XMLHttpRequest();
+            document.getElementById('btn').onclick = function () {
+                req.open('get','./09.php');
+                req.onreadystatechange = function () {
+                    if (req.readyState==4 && req.status==200){
+                        var str = req.responseText; // 获取返回的字符串
+                        alert(str);
+                    }
+                }
+                req.send();
+            }
+        }
+    </script>
+    <input type="button" value="点击" id="btn">
+    </body>
+</html>

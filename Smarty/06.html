@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="content-type" content="text/html" charset="UTF-8"/>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+
+        <script type="text/javascript"></script>
+
+        <style type="text/css">
+        </style>
+
+    </head>
+    <body>
+        <h2>数组元素访问</h2>
+        <pre>
+            foreach遍历数组内部关键字：
+            值变量@iteration----------> 从1开始的序号信息
+            值变量@index--------------> 从0开始的序号信息
+            值变量@first--------------> 判断第一个元素，返回boolean
+            值变量@last---------------> 判断最后一个元素，返回boolean
+            值变量@total--------------> 获得数组元素长度（个数）
+            值变量@show---------------> 判断当前数组是否有遍历元素出来，返回boolean
+        </pre>
+        关联数组遍历：<br>
+        {foreach $animal as $m => $n}
+            {$n@first}::{$n@index}--{$n@iteration}---{$m}--{$n}::{$n@last}<br>
+        {foreach}
+            没有任何记录信息！
+        {/foreach}
+        数组元素总个数：{$n@total}
+        是否遍历数组出来：{$n@show}
+    </body>
+</html>

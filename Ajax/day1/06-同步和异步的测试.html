@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+    <script type="text/javascript">
+        window.onload=function(){
+            var req=new XMLHttpRequest();
+            req.open('get','06.php',false); // 测试true和false的区别
+            req.onreadystatechange=function(){
+                if(req.readyState==4 && req.status==200){
+                    alert(req.responseText);
+                }
+            }
+            req.send('name='+name);
+            document.write(Math.random())
+    }
+    </script>
+    </body>
+</html>

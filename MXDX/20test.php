@@ -1,9 +1,11 @@
 <?php
-
-/**
- * MySQLDB工具类
- */
-class MySQLDB {
+interface I_DB {
+    public function my_query($sql);
+    public function fecthAll($sql);
+    public function fecthRow($sql);
+    public function fecthColumn($sql);
+}
+class MySQLDB implements I_DB {
     /**
      * 定义相关的属性
      */
@@ -12,10 +14,9 @@ class MySQLDB {
     private $user;   // 用户名
     private $pass;   // 密码
     private $charset;// 字符集
-    private $dbname; // 数据库名
-    // 运行时需要的属性
+    private $dbname; //数据库名
+    //运行时需要的属性
     private $link;   // 保存连接资源
-    private static $instance;   // 用于保存对象
 
     /**
      * 构造方法
@@ -29,41 +30,6 @@ class MySQLDB {
         $this->my_charset();
         // 选择默认数据库
         // $this->my_dbname();
-    }
-
-    /**
-     * 获得单例对象的公开的静态方法
-     * @param array $arr 需要传递给构造方法的参数
-     */
-    public static function getInstance($arr) {
-        if (!self::$instance instanceof self) {
-            self::$instance = new self($arr);
-        }
-        return self::$instance;
-    }
-
-    /**
-     * 私有化克隆魔术方法，防止通过克隆得到新对象
-     */
-    private function __clone()
-    {
-        // TODO: Implement __clone() method.
-    }
-    public function __set($name, $value)
-    {
-        // TODO: Implement __set() method.
-    }
-    public function __get($name)
-    {
-        // TODO: Implement __get() method.
-    }
-    public function __unset($name)
-    {
-        // TODO: Implement __unset() method.
-    }
-    public function __isset($name)
-    {
-        // TODO: Implement __isset() method.
     }
 
     /**

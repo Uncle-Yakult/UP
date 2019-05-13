@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+    <script type="text/javascript">
+        /*// ie7及以上，crome、火狐等等
+        var request = new XMLHttpRequest();
+        console.log(request);
+
+        // ie678
+        var request = new ActiveXObject("Msxml2.XMLHTTP.6.0");*/
+
+        // 兼容处理获取ajax对象
+        var req = '';
+        if (window.XMLHttpRequest)
+            req = new XMLHttpRequest();
+        else
+            req = new ActiveXObject("Msxm12.XMLHTTP");
+    </script>
+    </body>
+</html>
