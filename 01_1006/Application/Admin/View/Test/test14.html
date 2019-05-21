@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html" charset="UTF-8">
+    <title>test14</title>
+</head>
+<body>
+    volist标签：<br>
+    <volist name="array" id="vol">
+        {$vol} -
+    </volist>
+    <hr>
+    foreach标签：<br>
+    <foreach name="array" item="for">
+        {$for} -
+    </foreach>
+    <hr>
+    <hr>
+    volist标签：<br>
+    <volist name="array2" id="vol">
+        <volist name="vol" id="vo">
+            {$vo} --
+        </volist>
+        <br>
+    </volist>
+    <br>
+    foreach标签：<br>
+    <foreach name="array2" item="for">
+        {$for[0]} - {$for[1]} - {$for[2]} - {$for[3]}<br>
+    </foreach>
+</body>
+</html>

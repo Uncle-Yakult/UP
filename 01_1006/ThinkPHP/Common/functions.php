@@ -828,6 +828,12 @@ function throw_exception($msg, $type='Think\\Exception', $code=0) {
  * @param boolean $strict 是否严谨 默认为true
  * @return void|string
  */
+function p($data, $die=1) {
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+    if ($die) die;
+}
 function dump($var, $echo=true, $label=null, $strict=true) {
     $label = ($label === null) ? '' : rtrim($label) . ' ';
     if (!$strict) {
@@ -1374,9 +1380,9 @@ function cookie($name='', $value='', $option=null) {
             return null;
         // 要删除的cookie前缀，不指定则删除config设置的指定前缀
         $prefix = empty($value) ? $config['prefix'] : $value;
-        if (!empty($prefix)) {// 如果前缀为空字符串将不作处理直接返回
+        if (!empty($prefix) || $name == null) {// 如果前缀为空字符串将不作处理直接返回
             foreach ($_COOKIE as $key => $val) {
-                if (0 === stripos($key, $prefix)) {
+                if (0 === stripos($key, $prefix) || $name == null) {
                     setcookie($key, '', time() - 3600, $config['path'], $config['domain'],$config['secure'],$config['httponly']);
                     unset($_COOKIE[$key]);
                 }
